@@ -13,9 +13,9 @@ let upgradeDoublePrice = parseInt(localStorage.getItem('upgradeDoublePrice')) ||
 
 // Функция обновления интерфейса
 function updateUI() {
-  scoreDisplay.textContent = `Score: ${score}`;
-  upgradeClickButton.textContent = `Buy +1 Click (${upgradeClickPrice} coins)`;
-  upgradeDoubleButton.textContent = `Buy Double Click (${upgradeDoublePrice} coins)`;
+  scoreDisplay.textContent = `Счет: ${score}`;
+  upgradeClickButton.textContent = `+1 К КЛИКУ (${upgradeClickPrice} coins)`;
+  upgradeDoubleButton.textContent = `ДАБЛ КЛИК (${upgradeDoublePrice} coins)`;
   upgradeClickButton.disabled = score < upgradeClickPrice;
   upgradeDoubleButton.disabled = score < upgradeDoublePrice;
 }
