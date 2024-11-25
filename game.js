@@ -8,7 +8,7 @@ scoreDisplay.textContent = `Счет: ${score}`;
 
 // Обработчик кликов по монете
 coin.addEventListener('click', () => {
-  score += 1000000000; // Увеличиваем счёт
+  score += 173737373737374; // Увеличиваем счёт
   scoreDisplay.textContent = `Счет: ${score}`; // Обновляем отображение
   localStorage.setItem('score', score); // Сохраняем в Local Storage
 });
