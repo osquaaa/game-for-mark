@@ -4,7 +4,7 @@ const scoreDisplay = document.getElementById('score');
 
 // Получение сохранённого счёта из Local Storage
 let score = parseInt(localStorage.getItem('score')) || 0;
-scoreDisplay.textContent = `Score: ${score}`;
+scoreDisplay.textContent = `Счет: ${score}`;
 
 // Обработчик кликов по монете
 coin.addEventListener('click', () => {
