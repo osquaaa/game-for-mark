@@ -38,7 +38,7 @@
       font-weight: bold;
       color: #333;
     }
-    #upgrade {
+    .upgrade {
       margin-top: 20px;
       padding: 10px 20px;
       font-size: 18px;
@@ -48,7 +48,7 @@
       border-radius: 5px;
       cursor: pointer;
     }
-    #upgrade:disabled {
+    .upgrade:disabled {
       background: #888;
       cursor: not-allowed;
     }
@@ -57,8 +57,10 @@
 <body>
   <div id="coin">💰</div>
   <div id="score">Score: 0</div>
-  <button id="upgrade" disabled>Buy Upgrade (+1 per click) - 100 coins</button>
+  <button id="upgrade-click" class="upgrade" disabled>Buy +1 Click (100 coins)</button>
+  <button id="upgrade-double" class="upgrade" disabled>Buy Double Click (10,000 coins)</button>
 
   <script src="game.js"></script>
 </body>
 </html>
+      
