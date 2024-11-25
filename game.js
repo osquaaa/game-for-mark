@@ -1,50 +1,65 @@
-// Элементы
-const coin = document.getElementById('coin');
-const scoreDisplay = document.getElementById('score');
-const upgradeClickButton = document.getElementById('upgrade-click');
-const upgradeDoubleButton = document.getElementById('upgrade-double');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Click the Coin</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    #coin {
+      width: 100px;
+      height: 100px;
+      background: gold;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 1px 1px 2px #000;
+      user-select: none;
+    }
+    #score {
+      margin-top: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+    .upgrade {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .upgrade:disabled {
+      background: #888;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div id="coin">💰</div>
+  <div id="score">Score: 0</div>
+  <button id="upgrade-click" class="upgrade" disabled>Buy +1 Click (100 coins)</button>
+  <button id="upgrade-double" class="upgrade" disabled>Buy Double Click (10,000 coins)</button>
 
-// Начальные значения
-let score = parseInt(localStorage.getItem('score')) || 0;
-let coinsPerClick = parseInt(localStorage.getItem('coinsPerClick')) || 1;
-let multiplier = parseInt(localStorage.getItem('multiplier')) || 1;
-
-// Функция обновления интерфейса
-function updateUI() {
-  scoreDisplay.textContent = `Score: ${score}`;
-  upgradeClickButton.disabled = score < 100; // Отключаем кнопку, если недостаточно монет
-  upgradeDoubleButton.disabled = score < 10000; // Отключаем кнопку, если недостаточно монет
-}
-
-// Обработчик кликов по монете
-coin.addEventListener('click', () => {
-  score += coinsPerClick * multiplier; // Учитываем силу клика и множитель
-  localStorage.setItem('score', score); // Сохраняем счёт
-  updateUI();
-});
-
-// Обработчик покупки +1 к монетам за клик
-upgradeClickButton.addEventListener('click', () => {
-  if (score >= 100) {
-    score -= 100; // Списываем монеты
-    coinsPerClick += 1; // Увеличиваем монеты за клик
-    localStorage.setItem('score', score);
-    localStorage.setItem('coinsPerClick', coinsPerClick);
-    updateUI();
-  }
-});
-
-// Обработчик покупки удвоения монет за клик
-upgradeDoubleButton.addEventListener('click', () => {
-  if (score >= 10000) {
-    score -= 10000; // Списываем монеты
-    multiplier *= 2; // Удваиваем множитель
-    localStorage.setItem('score', score);
-    localStorage.setItem('multiplier', multiplier);
-    updateUI();
-  }
-});
-
-// Начальная настройка
-updateUI();
-// localStorage.removeItem('score');
+  <script src="game.js"></script>
+</body>
+</html>
