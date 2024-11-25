@@ -1,17 +1,38 @@
-// Элемент монеты и отображения счёта
+// Элементы
 const coin = document.getElementById('coin');
 const scoreDisplay = document.getElementById('score');
+const upgradeButton = document.getElementById('upgrade');
 
-// Получение сохранённого счёта из Local Storage
+// Начальные значения
 let score = parseInt(localStorage.getItem('score')) || 0;
-scoreDisplay.textContent = `Счет: ${score}`;
+let coinsPerClick = parseInt(localStorage.getItem('coinsPerClick')) || 1;
+
+// Обновление отображения счёта
+function updateUI() {
+  scoreDisplay.textContent = `Score: ${score}`;
+  upgradeButton.disabled = score < 100; // Отключаем кнопку, если монет меньше 100
+}
 
 // Обработчик кликов по монете
 coin.addEventListener('click', () => {
-  score += 173737373737374848477373737736266266625374848747363635384498838838489494857849938577488499847474774940387474782883474784849938474748484848484884848747574849948748595949484778484948362626262737848485855983737373626262; // Увеличиваем счёт
-  scoreDisplay.textContent = `Счет: ${score}`; // Обновляем отображение
+  score += coinsPerClick; // Увеличиваем счёт с учётом текущей силы клика
   localStorage.setItem('score', score); // Сохраняем в Local Storage
+  updateUI();
 });
+
+// Обработчик покупки улучшения
+upgradeButton.addEventListener('click', () => {
+  if (score >= 100) {
+    score -= 100; // Вычитаем стоимость улучшения
+    coinsPerClick += 1; // Увеличиваем монеты за клик
+    localStorage.setItem('score', score); // Сохраняем обновлённый счёт
+    localStorage.setItem('coinsPerClick', coinsPerClick); // Сохраняем силу клика
+    updateUI();
+  }
+});
+
+// Начальная настройка
+updateUI();
 
 // Для сброса счёта можно добавить (опционально):
 // localStorage.removeItem('score');
