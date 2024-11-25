@@ -3,63 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tap Battle</title>
+  <title>Click the Coin</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: #f2f2f2;
       margin: 0;
       padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
     }
-    .game-container {
-      margin-top: 50px;
-    }
-    .health-bar {
-      width: 300px;
-      height: 30px;
-      background: #ddd;
-      border: 2px solid #444;
-      margin: 10px auto;
-      position: relative;
-    }
-    .health {
-      height: 100%;
-      background: #4caf50;
-      width: 100%;
-      transition: width 0.2s ease-in-out;
-    }
-    .button-container {
-      margin-top: 20px;
-    }
-    button {
-      font-size: 18px;
-      padding: 10px 20px;
-      margin: 10px;
+    #coin {
+      width: 100px;
+      height: 100px;
+      background: gold;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 1px 1px 2px #000;
+      user-select: none;
     }
-    #result {
+    #score {
       margin-top: 20px;
       font-size: 24px;
+      font-weight: bold;
       color: #333;
     }
   </style>
 </head>
 <body>
-  <h1>Tap Battle</h1>
-  <div class="game-container">
-    <div class="health-bar">
-      <div class="health" id="playerHealth"></div>
-    </div>
-    <div class="health-bar">
-      <div class="health" id="enemyHealth"></div>
-    </div>
-    <div class="button-container">
-      <button onclick="attack()">Attack</button>
-      <button onclick="resetGame()">Reset</button>
-    </div>
-    <div id="result"></div>
-  </div>
+  <div id="coin">💰</div>
+  <div id="score">Score: 0</div>
 
   <script src="game.js"></script>
 </body>
